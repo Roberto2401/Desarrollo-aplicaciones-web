@@ -29,4 +29,29 @@
     height: 300px; 
     
 }
-
+.fixed{
+    position: fixed;
+    border: 3px solid red;
+    top: 150px; 
+    left: 50px; 
+    width: 100px; 
+    height: 100px; 
+}
+.absolute{
+    position: absolute;
+    border: 3px solid red;
+    top: 150px; 
+    left: 50px; 
+    width: 100px; 
+    height: 100px; 
+}
+.cuadrado{
+    width: 200px; 
+    height: 200px; 
+    background: #aaa;
+    margin-bottom:  20px;
+    display: inline-block;
+}
+a{
+    display: block; 
+}

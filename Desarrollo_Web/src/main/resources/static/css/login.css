@@ -1,0 +1,60 @@
+
+/* 
+    Created on : 31 ene. 2023, 20:22:19
+    Author     : Roberto
+*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+*{
+   font-family: 'Poppins', sans-serif;
+   box-sizing: border-box;
+}
+body{
+    background: linear-gradient(120deg,blue,red);
+    height: 100vh;
+    overflow: hidden;
+}
+.center{
+    position:absolute;
+    top:50%;
+    left:50%;
+    width: 400px;
+    transform: translate(-50%,-50%);
+    background-color: white; 
+    border-radius: 10px; 
+    
+}
+.center h1{
+    text-align: center; 
+    padding:20px 0;
+    border-bottom: 1px solid silver;
+}
+.center form{
+    padding: 0 40px;
+}
+form .txt_field{
+    position: relative;
+    border-bottom: 2px solid #adadad;
+    margin: 30px 0;
+}
+.txt_field input{
+   width:100%;
+   padding:0 5px;
+   height: 40px;
+   font-size: 16px; 
+   border:none;
+   background: none; 
+   outline: none; 
+       
+}
+.txt_field label{
+    position: absolute ; 
+    top:50%;
+    left:5px; 
+    color: #adadad;
+    transform: translateY(-50%);
+    font-size: 16px; 
+    
+} 
+
+
