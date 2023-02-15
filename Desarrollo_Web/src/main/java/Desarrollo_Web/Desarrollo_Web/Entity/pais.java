@@ -8,8 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-
-
+import java.io.Serializable;
 
 
 /**
@@ -18,7 +17,7 @@ import jakarta.persistence.Table;
  */
 @Entity 
 @Table (name="paises")
-public class pais {
+public class pais implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     private long id;
