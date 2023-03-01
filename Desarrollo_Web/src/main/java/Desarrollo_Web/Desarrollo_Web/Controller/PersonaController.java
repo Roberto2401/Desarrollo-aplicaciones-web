@@ -13,6 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 /**
  *
@@ -20,27 +23,48 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class PersonaController {
-    
+
     @Autowired
-     private IPersonaService personaService;
-    
+    private IPersonaService personaService;
+
     @Autowired
     private IPaisService paisService;
-    
-    @GetMapping("/persona")       
-    public String index(Model model){
-        List <persona> ListaPersona = personaService.getAllPersona();
-        model.addAttribute("titulo","Tabla Persona");
-        model.addAttribute("persona",ListaPersona);
+
+    @GetMapping("/persona")
+    public String index(Model model) {
+        List<persona> ListaPersona = personaService.getAllPersona();
+        model.addAttribute("titulo", "Tabla Persona");
+        model.addAttribute("persona", ListaPersona);
         return "personas";
     }
-    @GetMapping("/personaN") 
-    public String CrearPersona(Model model){
-        List<pais> ListaPaises= paisService.ListCountry();
-         model.addAttribute("Persona", new persona());
-         model.addAttribute("Paises",ListaPaises);
-         return "Crear";
+
+    @GetMapping("/personaN")
+    public String CrearPersona(Model model) {
+        List<pais> ListaPaises = paisService.ListCountry();
+        model.addAttribute("persona", new persona());
+        model.addAttribute("Paises", ListaPaises);
+        return "crear";
     }
-    
-    
+
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable("id") long idpersona) {
+        personaService.delete(idpersona);
+        return "redirect:/persona";
+
+    }
+
+    @PostMapping("/save")
+    public String guardarPersona(@ModelAttribute persona persona) {
+        personaService.savePersona(persona);
+        return "redirect:/persona";
+    }
+
+    @GetMapping("/editPersona/{id}")
+    public String editarPersona(@PathVariable("id") Long idpersona, Model model) {
+        persona persona = personaService.getPersonaById(idpersona);
+        List<pais> ListaPaises = paisService.ListCountry();
+        model.addAttribute("Persona", new persona());
+        model.addAttribute("Paises", ListaPaises);
+        return "Crear";
+    }
 }
