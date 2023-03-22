@@ -58,18 +58,18 @@
                             <input type="text" class="form-control form-control-sm col-md-6" th:field="*{email}"  placeholder= "Email" id="email" aria-describedby="emailHelp">                           
                         </div>
 </div>                        
-                <div class="form-group mb-3 row">
-                    <label class="form-control-sm col-form-label col-md-2 " for="paises">Pais</label>
-                    <div class="col-sm-10">
-                        <select th:field="*{pais}" class="form-control form-control-sm col-md-6" id="pais" aria-describedby="emailHelp" >
-                            <option th:each="x:${paises}"
-                                    th:value="${x.id}"
-                                    th:text="${x.pais}"/>
-                                
-                        </select>
+              <div class="form-group mb-3 row">
+                        <label class="form-control-sm col-form-label col-md-2 " for="Paises">Pais</label>
+                        <div class="col-sm-10">
+                            <select th:field="*{Pais}" class="form-control form-control-sm col-md-6" id="Pais" aria-describedby="emailHelp" >
+                                <option th:each="x:${Paises}"
+                                        th:value="${x.id}"
+                                        th:text="${x.Pais}"/>
+
+                            </select>
                         </div>
-                                                    </div>
-                    <button type="submit" class="btn btn-primary" value="Guardar">Submit</button>   
+                    </div>
+                    <button type="submit" class="btn btn-primary" value="Guardar">Submit</button>  
                  </form>
             </div>
 

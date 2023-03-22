@@ -40,5 +40,8 @@ public class personaService implements IPersonaService{
     public void delete(long Id) {
       personaRepository.deleteById(Id);
     }
+    public List<persona> findByKeyword(String keyword){
+        return personaRepository.findByKeyword(keyword);
+    }
     
 }

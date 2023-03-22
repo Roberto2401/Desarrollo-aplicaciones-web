@@ -8,6 +8,7 @@ import Desarrollo_Web.Desarrollo_Web.Entity.pais;
 import Desarrollo_Web.Desarrollo_Web.Entity.persona;
 import Desarrollo_Web.Desarrollo_Web.Service.IPaisService;
 import Desarrollo_Web.Desarrollo_Web.Service.IPersonaService;
+import Desarrollo_Web.Desarrollo_Web.Service.personaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,12 +30,20 @@ public class PersonaController {
 
     @Autowired
     private IPaisService paisService;
+    
+    @Autowired
+    private personaService personaService1;
 
     @GetMapping("/persona")
-    public String index(Model model) {
+    public String index(Model model, String keyword) {
         List<persona> ListaPersona = personaService.getAllPersona();
         model.addAttribute("titulo", "Tabla Persona");
         model.addAttribute("persona", ListaPersona);
+        if(keyword != null){
+            model.addAttribute("persona", personaService1.findByKeyword(keyword));
+        }else{
+          model.addAttribute("persona", personaService.getAllPersona());
+        }
         return "personas";
     }
 
@@ -63,7 +72,7 @@ public class PersonaController {
     public String editarPersona(@PathVariable("id") Long idpersona, Model model) {
         persona persona = personaService.getPersonaById(idpersona);
         List<pais> ListaPaises = paisService.ListCountry();
-        model.addAttribute("Persona", new persona());
+        model.addAttribute("persona",persona);
         model.addAttribute("Paises", ListaPaises);
         return "Crear";
     }
