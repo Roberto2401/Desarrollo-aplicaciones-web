@@ -4,14 +4,20 @@
  */
 package Desarrollo_Web.Desarrollo_Web.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+
+import java.awt.ActiveEvent;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.text.PasswordView;
+import java.util.Arrays;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  *
@@ -29,7 +35,11 @@ public class persona implements Serializable {
     private String apellido2;
     private String telefono;
     private String email;
-    
+    private String password;
+    private int active;
+    private String roles= "";
+    private String permissions="";
+            
     @ManyToOne
     @JoinColumn(name = "paises_id")
     private pais pais; 
@@ -89,7 +99,50 @@ public class persona implements Serializable {
     public void setPais(pais pais) {
         this.pais = pais;
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public int getActive() {
+        return active;
+    }
+
+    public void setActive(int active) {
+        this.active = active;
+    }
+
+    public String getRoles() {
+        return roles;
+    }
+
+    public void setRoles(String roles) {
+        this.roles = roles;
+    }
+
+    public String getPermissions() {
+        return permissions;
+    }
+
+    public void setPermissions(String permissions) {
+        this.permissions = permissions;
+    }
     
-    
+    public List<String> getRoleList(){
+        if(this.roles.length()>0){
+            return Arrays.asList(this.roles.split(","));
+        }
+        return new ArrayList<>();
+    } 
+  public List<String> gePermissionList(){
+        if(this.permissions.length()>0){
+            return Arrays.asList(this.permissions.split(","));
+        }
+        return new ArrayList<>();
+    } 
 
 }
