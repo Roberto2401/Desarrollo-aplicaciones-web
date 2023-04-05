@@ -33,7 +33,7 @@ public class Userprincipal implements UserDetails {
         authorities.add(authority);
     });
            this.persona.getRoleList().forEach(r ->{
-        GrantedAuthority authority= new SimpleGrantedAuthority("Role_" + r);
+        GrantedAuthority authority= new SimpleGrantedAuthority("ROLE_" + r);
         authorities.add(authority);
     });
     return authorities;
